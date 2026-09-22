@@ -1,0 +1,28 @@
+# 运行期产物
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# 测试与缓存
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# 本地日志与探针（非交付物）
+*.log
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 数据与模型权重（运行时下载，不入库）
+data/
+models/
+*.gguf

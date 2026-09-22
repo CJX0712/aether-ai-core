@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Aether AI Core
+  version: 0.1.0
+  description: >
+    模块化端到端 AI 系统框架（RAG + Agent）。默认链路为零依赖实现，离线可运行。
+  contact:
+    name: 晨星
+license:
+  name: MIT
+servers:
+  - url: http://127.0.0.1:8000
+    description: 本地服务
+paths:
+  /health:
+    get:
+      summary: 健康检查
+      operationId: health
+      responses:
+        "200":
+          description: 服务正常
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  version:
+                    type: string
+                    example: 0.1.0
+                  author:
+                    type: string
+                    example: 晨星
+  /v1/ingest:
+    post:
+      summary: 写入文本或文档
+      operationId: ingest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                texts:
+                  type: array
+                  items:
+                    type: string
+                docs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      text:
+                        type: string
+                      meta:
+                        type: object
+                        additionalProperties: true
+      responses:
+        "200":
+          description: 写入成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  added:
+                    type: integer
+                    example: 1
+  /v1/ask:
+    post:
+      summary: 检索增强问答
+      operationId: ask
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - question
+              properties:
+                question:
+                  type: string
+                k:
+                  type: integer
+                  default: 5
+      responses:
+        "200":
+          description: 返回答案与检索上下文
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                  contexts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                        score:
+                          type: number
+                        doc_id:
+                          type: string
+                          nullable: true
+  /v1/eval:
+    post:
+      summary: 运行评估套件（在全新管道上执行以保证确定性）
+      operationId: eval
+      responses:
+        "200":
+          description: 返回评估指标
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  num_indexed:
+                    type: integer
+                  query:
+                    type: string
+                  retrieved_doc_ids:
+                    type: array
+                    items:
+                      type: string
+                  recall@3:
+                    type: number
+                  recall@5:
+                    type: number
+                  ndcg@5:
+                    type: number
+                  faithfulness:
+                    type: number
+                  answer:
+                    type: string

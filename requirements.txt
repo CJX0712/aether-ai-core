@@ -1,0 +1,9 @@
+# 核心直接依赖（精确锁版，已在本机干净 venv 验证通过）
+numpy==2.5.3
+faiss-cpu==1.15.1
+fastapi==0.141.1
+pydantic==2.13.5
+typer==0.27.2
+httpx==0.28.1
+uvicorn==0.53.0
+pytest==9.1.1
