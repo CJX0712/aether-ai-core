@@ -1,5 +1,12 @@
 # Aether AI Core
 
+<p align="center">
+  <a href="https://github.com/CJX0712/aether-ai-core/actions/workflows/ci.yml"><img src="https://github.com/CJX0712/aether-ai-core/actions/workflows/ci.yml/badge.svg" alt="ci"></a>
+  <a href="https://github.com/CJX0712/aether-ai-core/releases"><img src="https://img.shields.io/github/v/release/CJX0712/aether-ai-core?sort=semver" alt="release"></a>
+  <a href="https://github.com/CJX0712/aether-ai-core/blob/main/LICENSE"><img src="https://img.shields.io/github/license/CJX0712/aether-ai-core" alt="license"></a>
+  <img src="https://img.shields.io/badge/author-%E6%99%A8%E6%98%9F-1f6feb" alt="author">
+</p>
+
 > 模块化端到端 AI 系统框架（RAG + Agent）。
 > 复用业界领先开源成果，按单一职责切分 AI 功能模块；每模块接口明确、可独立验证、可组合成完整可运行链路。
 
