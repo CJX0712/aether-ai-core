@@ -1,4 +1,4 @@
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 LABEL org.opencontainers.image.authors="晨星"
 LABEL org.opencontainers.image.title="aether-ai-core"
